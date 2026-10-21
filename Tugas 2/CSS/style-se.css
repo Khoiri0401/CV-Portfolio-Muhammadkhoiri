@@ -1,0 +1,100 @@
+.kartu-sertifikat {
+    position: relative;
+    min-width: 0;
+}
+
+.kartu-sertifikat input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.kotak-gambar {
+    position: relative;
+    display: block;
+    height: 205px;
+    overflow: hidden;
+    border: 1px solid #e3e7df;
+    border-radius: 6px;
+    background: #fff;
+    cursor: zoom-in;
+}
+
+.kotak-gambar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 220ms ease;
+}
+
+.kotak-gambar:hover img {
+    transform: scale(1.035);
+}
+
+.certificate-zoom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 5px 9px;
+    border-radius: 3px;
+    background: rgb(32 37 31 / 78%);
+    color: #fff;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 160ms ease;
+}
+
+.kotak-gambar:hover .certificate-zoom,
+.kotak-gambar:focus-visible .certificate-zoom {
+    opacity: 1;
+}
+
+.kartu-sertifikat input:focus-visible + .kotak-gambar {
+    outline: 3px solid #86a78d;
+    outline-offset: 3px;
+}
+
+.kartu-sertifikat input:checked + .kotak-gambar {
+    position: fixed;
+    z-index: 1080;
+    inset: 0;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    padding: 5vh 5vw;
+    border: 0;
+    border-radius: 0;
+    background: rgb(18 22 19 / 92%);
+    cursor: zoom-out;
+}
+
+.kartu-sertifikat input:checked + .kotak-gambar img {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.kartu-sertifikat input:checked + .kotak-gambar .certificate-zoom {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .kotak-gambar {
+        height: 230px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kotak-gambar img,
+    .certificate-zoom {
+        transition-duration: 0.01ms;
+    }
+}
